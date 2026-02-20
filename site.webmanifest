@@ -1,0 +1,31 @@
+{
+  "name": "URV AI",
+  "short_name": "URV AI",
+  "description": "The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access.",
+  "start_url": "https://urv-ai.vercel.app/",
+  "scope": "https://urv-ai.vercel.app/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0A0D14",
+  "theme_color": "#00E5C3",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
