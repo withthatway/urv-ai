@@ -1,0 +1,29 @@
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* ── Dark mode (default) ── */
+    .seg-left  { fill: #00E5C3; }
+    .seg-right { fill: #5B6EF5; }
+    .seg-top   { fill: #EEF0F6; }
+    .dot-bg    { fill: #0A0D14; }
+    .dot-core  { fill: #00E5C3; }
+
+    /* ── Light mode ── */
+    @media (prefers-color-scheme: light) {
+      .seg-left  { fill: #00B89E; }
+      .seg-right { fill: #4558E8; }
+      .seg-top   { fill: #1A2040; }
+      .dot-bg    { fill: #F0F2FA; }
+      .dot-core  { fill: #00B89E; }
+    }
+  </style>
+
+  <!-- Understanding (bottom-left) -->
+  <path class="seg-left"  d="M48 78 L16 24 L48 48 Z"/>
+  <!-- Reasoning (bottom-right) -->
+  <path class="seg-right" d="M48 78 L80 24 L48 48 Z"/>
+  <!-- Value (top) -->
+  <path class="seg-top"   d="M48 14 L16 24 L48 48 L80 24 Z"/>
+  <!-- Center nucleus -->
+  <circle class="dot-bg"   cx="48" cy="48" r="5.5"/>
+  <circle class="dot-core" cx="48" cy="48" r="2.8"/>
+</svg>
