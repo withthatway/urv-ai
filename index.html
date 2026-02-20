@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ── Primary SEO ── -->
+  <title>URV AI | Unrestricted AI Chat</title>
+  <meta name="description" content="The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta name="theme-color" content="#00E5C3"/>
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type"         content="website"/>
+  <meta property="og:url"          content="https://urv-ai.vercel.app/"/>
+  <meta property="og:title"        content="URV AI | Unrestricted AI Chat"/>
+  <meta property="og:description"  content="The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta property="og:image"        content="/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="URV AI | Unrestricted AI Chat"/>
+  <meta name="twitter:description" content="The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta name="twitter:image"       content="/og-image.png"/>
+
+  <!-- ── Author & Crawl directives ── -->
+  <meta name="author" content="WithThatWay"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://urv-ai.vercel.app/"/>
+
+  <!-- ── Structured Data (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "URV AI",
+    "alternateName": "URV AI Chat",
+    "description": "The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access.",
+    "url": "https://urv-ai.vercel.app",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free access to unrestricted AI chat"
+    },
+    "featureList": [
+      "Multiple LLM models",
+      "Unlimited character creation",
+      "AI image generation",
+      "Uncensored chat"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "WithThatWay",
+      "url": "https://perchance.org/withthatway"
+    }
+  }
+  </script>
+
+  <!-- ── Favicons ── -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+
+  <!-- ── Fonts ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ─────────────────────────────────────────
+       RESET & TOKENS
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-main:    #0A0D14;
+      --bg-sec:     #11151F;
+      --bg-ter:     #1E2535;
+      --text-main:  #EEF0F6;
+      --text-muted: #5A6080;
+      --accent:     #00E5C3;
+      --accent-dim: rgba(0,229,195,0.1);
+      --indigo:     #5B6EF5;
+      --border:     #1E2535;
+
+      /* SVG mark tokens */
+      --urv-left:   #00E5C3;
+      --urv-right:  #5B6EF5;
+      --urv-top:    #EEF0F6;
+      --urv-dot-bg: #0A0D14;
+      --urv-ping:   #00E5C3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       GRAIN TEXTURE OVERLAY
+    ───────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ─────────────────────────────────────────
+       DOT GRID BACKGROUND
+    ───────────────────────────────────────── */
+    .dot-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, #2A3347 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,0,0,0.4) 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,0,0,0.4) 0%, transparent 100%);
+    }
+
+    /* ─────────────────────────────────────────
+       GLOW BLOBS
+    ───────────────────────────────────────── */
+    .glow-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .glow-teal {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0,229,195,0.07) 0%, transparent 65%);
+      top: -150px;
+      right: -100px;
+      animation: blobDrift 14s ease-in-out infinite alternate;
+    }
+
+    .glow-indigo {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(91,110,245,0.06) 0%, transparent 65%);
+      bottom: -100px;
+      left: -150px;
+      animation: blobDrift 18s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes blobDrift {
+      from { transform: translate(0, 0) scale(1);   }
+      to   { transform: translate(40px, 30px) scale(1.08); }
+    }
+
+    /* ─────────────────────────────────────────
+       PAGE WRAPPER
+    ───────────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      border-bottom: 1px solid rgba(30,37,53,0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,13,20,0.75);
+      animation: navSlideIn 0.6s ease both;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .nav-mark {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 8px rgba(0,229,195,0.3));
+    }
+
+    .nav-wordmark {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: baseline;
+      gap: 1px;
+      line-height: 1;
+    }
+
+    .nav-wordmark span { color: var(--accent); }
+
+    .nav-tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1;
+    }
+
+    .nav-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--bg-sec);
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      padding: 80px 48px 100px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── Left: Copy ── */
+    .hero-copy { display: flex; flex-direction: column; gap: 28px; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-headline {
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      color: var(--text-main);
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.35s both;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--accent);
+      position: relative;
+    }
+
+    .hero-headline .dim { color: var(--text-muted); }
+
+    .hero-desc {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.5s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.65s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #0A0D14;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      box-shadow: 0 0 0 0 rgba(0,229,195,0);
+      letter-spacing: -0.2px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 8px 28px rgba(0,229,195,0.28);
+    }
+
+    .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+    .btn-primary svg {
+      transition: transform 0.2s;
+    }
+
+    .btn-primary:hover svg { transform: translateX(3px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-main);
+      border-color: var(--text-muted);
+      background: var(--bg-sec);
+    }
+
+    /* ── Capability pills ── */
+    .capability-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.8s both;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    .pill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ── Right: Animated mark ── */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.4s both;
+    }
+
+    .mark-orbit {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Outer ring */
+    .mark-orbit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(0,229,195,0.1);
+      animation: orbitSpin 20s linear infinite;
+    }
+
+    /* Inner ring */
+    .mark-orbit::after {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px dashed rgba(91,110,245,0.12);
+      animation: orbitSpin 12s linear infinite reverse;
+    }
+
+    /* Orbit dot */
+    .orbit-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      top: 12px;
+      left: 50%;
+      transform-origin: 0 158px;
+      animation: orbitSpin 20s linear infinite;
+      margin-left: -3px;
+    }
+
+    .orbit-dot-2 {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--indigo);
+      box-shadow: 0 0 8px var(--indigo);
+      top: 52px;
+      left: 50%;
+      transform-origin: 0 118px;
+      animation: orbitSpin 12s linear infinite reverse;
+      margin-left: -2px;
+    }
+
+    @keyframes orbitSpin { to { transform: rotate(360deg); } }
+
+    /* The SVG mark — large, center */
+    .hero-mark {
+      width: 160px;
+      height: 160px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 40px rgba(0,229,195,0.2));
+      animation: markFloat 4s ease-in-out infinite;
+    }
+
+    .hero-mark svg { width: 100%; height: 100%; overflow: visible; }
+
+    @keyframes markFloat {
+      0%, 100% { transform: translateY(0);    }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── SVG segment animations ── */
+    .seg-left  { fill: var(--urv-left);   transform-origin: 37px 57px; animation: segLeftEntry  0.7s cubic-bezier(0.34,1.56,0.64,1) 0.6s both, segLeftPulse  3s ease-in-out 2s infinite; }
+    .seg-right { fill: var(--urv-right);  transform-origin: 59px 57px; animation: segRightEntry 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.8s both, segRightPulse 3s ease-in-out 2.9s infinite; }
+    .seg-top   { fill: var(--urv-top);    transform-origin: 48px 31px; animation: segTopEntry   0.7s cubic-bezier(0.34,1.56,0.64,1) 0.4s both, segTopPulse   3s ease-in-out 1.1s infinite; }
+    .dot-bg    { fill: var(--urv-dot-bg); transform-origin: 48px 48px; animation: dotBounce 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.1s both; }
+    .dot-core  { fill: var(--urv-left);   transform-origin: 48px 48px; animation: dotBounce 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.2s both; }
+    .ping-ring { fill: none; stroke: var(--urv-ping); stroke-width: 1.2; transform-origin: 48px 48px; animation: pingExpand 2.8s ease-out 1.5s infinite; }
+
+    @keyframes segTopEntry   { from { opacity:0; transform: translateY(-12px) scale(0.8); } to { opacity:1; transform: translateY(0) scale(1); } }
+    @keyframes segLeftEntry  { from { opacity:0; transform: translate(-10px,10px) scale(0.8); } to { opacity:1; transform: translate(0,0) scale(1); } }
+    @keyframes segRightEntry { from { opacity:0; transform: translate(10px,10px) scale(0.8); } to { opacity:1; transform: translate(0,0) scale(1); } }
+    @keyframes dotBounce     { from { opacity:0; transform: scale(0); } to { opacity:1; transform: scale(1); } }
+    @keyframes pingExpand    { 0% { transform:scale(1); opacity:0.6; stroke-width:1.2; } 75% { transform:scale(10); opacity:0; stroke-width:0.2; } 100% { transform:scale(10); opacity:0; } }
+    @keyframes segTopPulse   { 0%,100% { opacity:1; transform:scale(1); } 12% { opacity:0.6; transform:scale(0.94); } 24% { opacity:1; transform:scale(1); } }
+    @keyframes segLeftPulse  { 0%,100% { opacity:1; transform:scale(1); } 12% { opacity:0.6; transform:scale(0.94); } 24% { opacity:1; transform:scale(1); } }
+    @keyframes segRightPulse { 0%,100% { opacity:1; transform:scale(1); } 12% { opacity:0.6; transform:scale(0.94); } 24% { opacity:1; transform:scale(1); } }
+
+    /* ── Stat strip below mark ── */
+    .stat-strip {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.2s both;
+    }
+
+    .stat {
+      background: var(--bg-sec);
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      min-width: 90px;
+    }
+
+    .stat-val {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .stat-val span { color: var(--accent); }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(30,37,53,0.5);
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeIn 0.6s ease 1.4s both;
+    }
+
+    .footer-brand {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-brand:hover { color: var(--text-main); }
+
+    .footer-brand span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-main); }
+
+    /* ─────────────────────────────────────────
+       KEYFRAMES — PAGE ENTRANCE
+    ───────────────────────────────────────── */
+    @keyframes navSlideIn {
+      from { opacity:0; transform: translateY(-12px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(18px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 24px 80px;
+        gap: 64px;
+        text-align: center;
+      }
+
+      .hero-copy { align-items: center; }
+
+      .hero-label { justify-content: center; }
+
+      .hero-desc { text-align: center; }
+
+      .hero-headline { font-size: clamp(2.4rem, 8vw, 3.2rem); }
+
+      .hero-actions { justify-content: center; }
+
+      .capability-pills { justify-content: center; }
+
+      .hero-visual { order: -1; }
+
+      .mark-orbit { width: 260px; height: 260px; }
+
+      .hero-mark { width: 120px; height: 120px; }
+
+      .orbit-dot  { transform-origin: 0 118px; top: 10px; }
+      .orbit-dot-2 { transform-origin: 0 88px; top: 40px; }
+
+      .stat-strip { position: relative; bottom: auto; left: auto; transform: none; width: fit-content; margin: 0 auto; }
+
+      footer {
+        padding: 20px 24px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stat { padding: 8px 14px; min-width: 76px; }
+      .stat-val { font-size: 0.9rem; }
+      .btn-primary, .btn-ghost { padding: 12px 20px; font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background layers -->
+  <div class="dot-grid" aria-hidden="true"></div>
+  <div class="glow-layer" aria-hidden="true">
+    <div class="glow-teal"></div>
+    <div class="glow-indigo"></div>
+  </div>
+
+  <div class="page">
+
+    <!-- ── NAV ── -->
+    <nav>
+      <a href="/" class="nav-logo" aria-label="URV AI Home">
+        <svg class="nav-mark" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M48 78 L16 24 L48 48 Z" fill="#00E5C3"/>
+          <path d="M48 78 L80 24 L48 48 Z" fill="#5B6EF5"/>
+          <path d="M48 14 L16 24 L48 48 L80 24 Z" fill="#EEF0F6"/>
+          <circle cx="48" cy="48" r="5.5" fill="#0A0D14"/>
+          <circle cx="48" cy="48" r="2.8" fill="#00E5C3"/>
+        </svg>
+        <div class="nav-logo-text">
+          <span class="nav-wordmark">URV<span>.</span>AI</span>
+          <span class="nav-tagline">Understanding · Reasoning · Value</span>
+        </div>
+      </a>
+      <span class="nav-badge">V2</span>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero" aria-labelledby="hero-heading">
+
+      <!-- Left: Copy -->
+      <div class="hero-copy">
+
+        <span class="hero-label">Unrestricted AI Chat</span>
+
+        <h1 class="hero-headline" id="hero-heading">
+          Where creativity<br/>
+          meets <em>uncensored</em><br/>
+          <span class="dim">freedom.</span>
+        </h1>
+
+        <p class="hero-desc">
+          Access diverse LLMs, create unlimited characters,
+          and generate images — all with free access.
+          No walls. No filters. Just you and the model.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://perchance.org/urv-ai-chat" target="_self" class="btn-primary" rel="noopener">
+            Start Chat
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="https://perchance.org/urv-ai-chat" target="_self" class="btn-ghost" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+            Free access
+          </a>
+        </div>
+
+        <div class="capability-pills">
+          <span class="pill"><span class="pill-dot"></span>Multiple LLMs</span>
+          <span class="pill"><span class="pill-dot"></span>Character Creation</span>
+          <span class="pill"><span class="pill-dot"></span>Image Generation</span>
+          <span class="pill"><span class="pill-dot"></span>No Censorship</span>
+        </div>
+
+      </div>
+
+      <!-- Right: Animated mark -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mark-orbit">
+          <!-- Orbit dots -->
+          <div class="orbit-dot"></div>
+          <div class="orbit-dot-2"></div>
+
+          <!-- Central URV mark -->
+          <div class="hero-mark">
+            <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle class="ping-ring" cx="48" cy="48" r="5"/>
+              <path class="seg-left"  d="M48 78 L16 24 L48 48 Z"/>
+              <path class="seg-right" d="M48 78 L80 24 L48 48 Z"/>
+              <path class="seg-top"   d="M48 14 L16 24 L48 48 L80 24 Z"/>
+              <circle class="dot-bg"   cx="48" cy="48" r="5.5"/>
+              <circle class="dot-core" cx="48" cy="48" r="2.8"/>
+            </svg>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="stat-strip">
+            <div class="stat">
+              <span class="stat-val"><span>∞</span></span>
+              <span class="stat-label">Characters</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">Free<span>.</span></span>
+              <span class="stat-label">Always</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">Multi<span>-</span>LLM</span>
+              <span class="stat-label">Models</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <a href="https://perchance.org/withthatway" target="_blank" rel="noopener" class="footer-brand">
+        <span>WithThatWay</span> Project
+      </a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://perchance.org/urv-ai-chat" target="_self">Launch App</a>
+      </nav>
+    </footer>
+
+  </div><!-- /.page -->
+
+</body>
+</html>
