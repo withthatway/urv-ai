@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+
+  <title>URV AI | Unrestricted AI Chat</title>
+
+  <!-- Basic Meta -->
+  <meta name="description" content="URV AI: The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta name="author" content="WithThatWay"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="keywords" content="AI Chat, No Filter AI, NSFW AI Chat, Uncensored AI, Janitor AI Alternative, Character AI Filter Bypass, Free AI Image Generator, ERP AI, Anime Waifu Chat, Custom AI Characters, Spicy AI, Unrestricted Chatbot, URV AI, Virtual Girlfriend, Free LLM Chat"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://urv-ai.vercel.app/app.html"/>
+  <meta property="og:title"       content="URV AI"/>
+  <meta property="og:description" content="URV AI: The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta property="og:image"       content="https://user.uploads.dev/file/e5ba68836d7e3a3f83439c21ce7ec319.png"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="URV AI"/>
+  <meta name="twitter:description" content="URV AI: The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta name="twitter:image"       content="https://user.uploads.dev/file/e5ba68836d7e3a3f83439c21ce7ec319.png"/>
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#00E5C3" media="(prefers-color-scheme: dark)"/>
+  <meta name="theme-color" content="#00B89E" media="(prefers-color-scheme: light)"/>
+
+  <!-- PWA -->
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="URV AI"/>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="https://user.uploads.dev/file/55a9efe8f5c91d9069755d2538d8daae.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://user.uploads.dev/file/e3e8f65c6307c05bc3a2bba61e0803ca.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://user.uploads.dev/file/c4de78448bee30a78898d5cf1a4c44e6.png"/>
+  <link rel="manifest" href="https://user.uploads.dev/file/c0f2806203af836e36a1371689aeb381.bin"/>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #0A0D14;
+      overflow: hidden;
+    }
+
+    /* ── Splash screen — shown while iframe loads ── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: #0A0D14;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #splash.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash-mark {
+      width: 72px;
+      height: 72px;
+      filter: drop-shadow(0 0 24px rgba(0, 229, 195, 0.3));
+      animation: markFloat 3.6s ease-in-out infinite;
+      overflow: visible;
+    }
+
+    /* SVG segment animations */
+    .s-top   { fill: #EEF0F6; transform-origin: 48px 31px; animation: segTopEntry   0.65s cubic-bezier(0.34,1.56,0.64,1) 0.1s  both; }
+    .s-left  { fill: #00E5C3; transform-origin: 37px 57px; animation: segLeftEntry  0.65s cubic-bezier(0.34,1.56,0.64,1) 0.28s both; }
+    .s-right { fill: #5B6EF5; transform-origin: 59px 57px; animation: segRightEntry 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.46s both; }
+    .s-dbg   { fill: #0A0D14; transform-origin: 48px 48px; animation: dotBounce 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.74s both; }
+    .s-dc    { fill: #00E5C3; transform-origin: 48px 48px; animation: dotBounce 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.82s both; }
+    .s-ping  { fill: none; stroke: #00E5C3; stroke-width: 1.2; transform-origin: 48px 48px; animation: pingExpand 2.6s ease-out 1.1s infinite; }
+
+    @keyframes segTopEntry   { from { opacity:0; transform: translateY(-10px) scale(0.82); } to { opacity:1; transform: translateY(0) scale(1); } }
+    @keyframes segLeftEntry  { from { opacity:0; transform: translate(-9px,8px) scale(0.82); } to { opacity:1; transform: translate(0,0) scale(1); } }
+    @keyframes segRightEntry { from { opacity:0; transform: translate(9px,8px) scale(0.82); } to { opacity:1; transform: translate(0,0) scale(1); } }
+    @keyframes dotBounce     { from { opacity:0; transform: scale(0); } to { opacity:1; transform: scale(1); } }
+    @keyframes pingExpand    { 0% { transform:scale(1); opacity:0.65; } 75% { transform:scale(9); opacity:0; } 100% { transform:scale(9); opacity:0; } }
+    @keyframes markFloat     { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+
+    .splash-status {
+      font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #5A6080;
+      animation: fadeIn 0.5s ease 0.8s both;
+    }
+
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+    /* ── The iframe ── */
+    #chat-frame {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* Safe area insets for notched phones */
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Splash shown while iframe loads -->
+  <div id="splash">
+    <svg class="splash-mark" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="s-ping" cx="48" cy="48" r="5"/>
+      <path class="s-left"  d="M48 78 L16 24 L48 48 Z"/>
+      <path class="s-right" d="M48 78 L80 24 L48 48 Z"/>
+      <path class="s-top"   d="M48 14 L16 24 L48 48 L80 24 Z"/>
+      <circle class="s-dbg" cx="48" cy="48" r="5.5"/>
+      <circle class="s-dc"  cx="48" cy="48" r="2.8"/>
+    </svg>
+    <span class="splash-status">Loading URV AI…</span>
+  </div>
+
+  <!-- Fullscreen chat iframe -->
+  <iframe
+    id="chat-frame"
+    src="https://null.perchance.org/urv-ai-chat"
+    title="URV AI Chat"
+    allow="microphone; camera; clipboard-read; clipboard-write; fullscreen"
+    loading="eager"
+  ></iframe>
+
+  <script>
+    const splash = document.getElementById('splash');
+    const frame  = document.getElementById('chat-frame');
+
+    // Hide splash once iframe signals it has loaded
+    frame.addEventListener('load', () => {
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        // Remove from DOM after transition so it doesn't block touches
+        setTimeout(() => splash.remove(), 700);
+      }, 600); // slight delay so the first paint settles
+    });
+
+    // Fallback — hide splash after 8s regardless, in case load event doesn't fire
+    setTimeout(() => {
+      if (document.getElementById('splash')) {
+        splash.classList.add('hidden');
+        setTimeout(() => splash.remove(), 700);
+      }
+    }, 8000);
+  </script>
+
+</body>
+</html>
