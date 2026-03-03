@@ -255,6 +255,43 @@
       background: var(--bg-sec);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--bg-sec);
+    }
+
+    .lang-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      line-height: 1.6;
+    }
+
+    .lang-btn.active {
+      background: var(--bg-ter);
+      color: var(--accent);
+    }
+
+    .lang-btn:hover:not(.active) { color: var(--text-main); }
+
     /* ─────────────────────────────────────────
        HERO
     ───────────────────────────────────────── */
@@ -610,6 +647,45 @@
 
     .footer-links a:hover { color: var(--text-main); }
 
+    .footer-credits {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-credit-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-credit-link span {
+      color: var(--accent);
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .footer-credit-link:hover { color: var(--text-main); }
+    .footer-credit-link:hover span { opacity: 1; }
+
+    .footer-credit-sep {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--border);
+    }
+
+    /* ─────────────────────────────────────────
+       MOBILE STAT CARDS (hidden on desktop)
+    ───────────────────────────────────────── */
+    .stat-cards-mobile {
+      display: none; /* shown only in mobile media query */
+    }
+
     /* ─────────────────────────────────────────
        KEYFRAMES — PAGE ENTRANCE
     ───────────────────────────────────────── */
@@ -662,7 +738,72 @@
       .orbit-dot  { transform-origin: 0 118px; top: 10px; }
       .orbit-dot-2 { transform-origin: 0 88px; top: 40px; }
 
-      .stat-strip { position: relative; bottom: auto; left: auto; transform: none; width: fit-content; margin: 0 auto; }
+      /* Pull strip out of the orbit so it can span full width */
+      .hero-visual {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Hide desktop stat strip on mobile — replaced by cards below */
+      .stat-strip { display: none; }
+
+      /* Mobile stat cards — 3 equal columns */
+      .stat-cards-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+        opacity: 0;
+        animation: fadeUp 0.7s ease 1.2s both;
+      }
+
+      .stat-card-m {
+        background: var(--bg-sec);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 10px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        transition: border-color 0.25s, background 0.25s;
+      }
+
+      .stat-card-m:hover {
+        border-color: rgba(0,229,195,0.25);
+        background: rgba(0,229,195,0.04);
+      }
+
+      .stat-card-m-icon {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        letter-spacing: -1px;
+      }
+
+      .stat-card-m-val {
+        font-family: 'Syne', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: -0.3px;
+        line-height: 1;
+      }
+
+      .stat-card-m-val span { color: var(--accent); }
+
+      .stat-card-m-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        text-align: center;
+        line-height: 1.3;
+      }
 
       footer {
         padding: 20px 24px;
@@ -671,6 +812,8 @@
         text-align: center;
         gap: 12px;
       }
+
+      .footer-credits { justify-content: center; }
     }
 
     @media (max-width: 480px) {
@@ -706,7 +849,13 @@
           <span class="nav-tagline">Understanding · Reasoning · Value</span>
         </div>
       </a>
-      <span class="nav-badge">V2</span>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="id" onclick="setLang('id')">ID</button>
+        </div>
+        <span class="nav-badge">V2</span>
+      </div>
     </nav>
 
     <!-- ── HERO ── -->
@@ -715,15 +864,15 @@
       <!-- Left: Copy -->
       <div class="hero-copy">
 
-        <span class="hero-label">Unrestricted AI Chat</span>
+        <span class="hero-label" data-i18n="hero-label">Unrestricted AI Chat</span>
 
-        <h1 class="hero-headline" id="hero-heading">
+        <h1 class="hero-headline" id="hero-heading" data-i18n="hero-headline">
           Where creativity<br/>
           meets <em>uncensored</em><br/>
           <span class="dim">freedom.</span>
         </h1>
 
-        <p class="hero-desc">
+        <p class="hero-desc" data-i18n="hero-desc">
           Access diverse LLMs, create unlimited characters,
           and generate images — all with free access.
           No walls. No filters. Just you and the model.
@@ -731,7 +880,7 @@
 
         <div class="hero-actions">
           <a href="https://perchance.org/urv-ai-chat" target="_self" class="btn-primary" rel="noopener">
-            Start Chat
+            <span data-i18n="btn-start">Start Chat</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
@@ -741,15 +890,15 @@
               <circle cx="12" cy="12" r="10"/>
               <path d="M12 8v4l3 3"/>
             </svg>
-            Free access
+            <span data-i18n="btn-free">Free access</span>
           </a>
         </div>
 
         <div class="capability-pills">
-          <span class="pill"><span class="pill-dot"></span>Multiple LLMs</span>
-          <span class="pill"><span class="pill-dot"></span>Character Creation</span>
-          <span class="pill"><span class="pill-dot"></span>Image Generation</span>
-          <span class="pill"><span class="pill-dot"></span>No Censorship</span>
+          <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-llm">Multiple LLMs</span></span>
+          <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-char">Character Creation</span></span>
+          <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-img">Image Generation</span></span>
+          <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-censor">No Censorship</span></span>
         </div>
 
       </div>
@@ -777,18 +926,37 @@
           <div class="stat-strip">
             <div class="stat">
               <span class="stat-val"><span>∞</span></span>
-              <span class="stat-label">Characters</span>
+              <span class="stat-label" data-i18n="stat-char">Characters</span>
             </div>
             <div class="stat">
               <span class="stat-val">Free<span>.</span></span>
-              <span class="stat-label">Always</span>
+              <span class="stat-label" data-i18n="stat-free">Always</span>
             </div>
             <div class="stat">
               <span class="stat-val">Multi<span>-</span>LLM</span>
-              <span class="stat-label">Models</span>
+              <span class="stat-label" data-i18n="stat-llm">Models</span>
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- Mobile-only stat cards (orbit strip hidden on mobile) -->
+      <div class="stat-cards-mobile" aria-hidden="true">
+        <div class="stat-card-m">
+          <div class="stat-card-m-icon">∞</div>
+          <div class="stat-card-m-val">Unlimited</div>
+          <div class="stat-card-m-label" data-i18n="stat-char">Characters</div>
+        </div>
+        <div class="stat-card-m">
+          <div class="stat-card-m-icon" style="font-size:1rem;letter-spacing:-0.5px;">Free<span style="color:var(--accent)">.</span></div>
+          <div class="stat-card-m-val" data-i18n="stat-free">Always</div>
+          <div class="stat-card-m-label" data-i18n="stat-nopay">No Paywall</div>
+        </div>
+        <div class="stat-card-m">
+          <div class="stat-card-m-icon" style="font-size:0.85rem;letter-spacing:0px;">Multi</div>
+          <div class="stat-card-m-val"><span>LLM</span></div>
+          <div class="stat-card-m-label" data-i18n="stat-llm">Models</div>
         </div>
       </div>
 
@@ -796,15 +964,81 @@
 
     <!-- ── FOOTER ── -->
     <footer>
+      <div class="footer-credits">
+        <a href="https://perchance.org" target="_blank" rel="noopener" class="footer-credit-link">
+          <span data-i18n="footer-hosted">Hosted on</span> <span>Perchance</span>
+        </a>
+        <span class="footer-credit-sep">·</span>
+        <a href="https://pollinations.ai" target="_blank" rel="noopener" class="footer-credit-link">
+          <span data-i18n="footer-partof">Part of</span> <span>Pollinations AI</span>
+        </a>
+      </div>
       <a href="https://perchance.org/withthatway" target="_blank" rel="noopener" class="footer-brand">
         <span>WithThatWay</span> Project
       </a>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://perchance.org/urv-ai-chat" target="_self">Launch App</a>
+        <a href="https://perchance.org/urv-ai-chat" target="_self" data-i18n="footer-launch">Launch App</a>
       </nav>
     </footer>
 
   </div><!-- /.page -->
+
+  <script>
+    const translations = {
+      en: {
+        'hero-label':    'Unrestricted AI Chat',
+        'hero-headline': 'Where creativity<br/>meets <em>uncensored</em><br/><span class="dim">freedom.</span>',
+        'hero-desc':     'Access diverse LLMs, create unlimited characters, and generate images — all with free access. No walls. No filters. Just you and the model.',
+        'btn-start':     'Start Chat',
+        'btn-free':      'Free access',
+        'pill-llm':      'Multiple LLMs',
+        'pill-char':     'Character Creation',
+        'pill-img':      'Image Generation',
+        'pill-censor':   'No Censorship',
+        'stat-char':     'Characters',
+        'stat-free':     'Always',
+        'stat-nopay':    'No Paywall',
+        'stat-llm':      'Models',
+        'footer-hosted': 'Hosted on',
+        'footer-partof': 'Part of',
+        'footer-launch': 'Launch App',
+      },
+      id: {
+        'hero-label':    'Chat AI Tanpa Batas',
+        'hero-headline': 'Tempat kreativitas<br/>ketemu <em>kebebasan</em><br/><span class="dim">tanpa sensor.</span>',
+        'hero-desc':     'Akses berbagai LLM, bikin karakter sesukamu, dan generate gambar — semuanya gratis. Nggak ada batasan. Nggak ada filter. Cuma kamu sama modelnya.',
+        'btn-start':     'Mulai Chat',
+        'btn-free':      'Gratis, kok',
+        'pill-llm':      'Banyak LLM',
+        'pill-char':     'Bikin Karakter',
+        'pill-img':      'Generate Gambar',
+        'pill-censor':   'Tanpa Sensor',
+        'stat-char':     'Karakter',
+        'stat-free':     'Selamanya',
+        'stat-nopay':    'Gratis',
+        'stat-llm':      'Model',
+        'footer-hosted': 'Di-host di',
+        'footer-partof': 'Bagian dari',
+        'footer-launch': 'Buka Aplikasi',
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+
+    // Auto-detect Indonesian browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang && browserLang.toLowerCase().startsWith('id')) setLang('id');
+  </script>
 
 </body>
 </html>
