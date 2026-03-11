@@ -1,13 +1,6 @@
 <div align="center">
 
-<!-- URV SVG Mark -->
-<svg width="72" height="72" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M48 78 L16 24 L48 48 Z" fill="#00E5C3"/>
-  <path d="M48 78 L80 24 L48 48 Z" fill="#5B6EF5"/>
-  <path d="M48 14 L16 24 L48 48 L80 24 Z" fill="#EEF0F6"/>
-  <circle cx="48" cy="48" r="5.5" fill="#0A0D14"/>
-  <circle cx="48" cy="48" r="2.8" fill="#00E5C3"/>
-</svg>
+<img src="favicon.svg" alt="URV AI Logo" width="96" height="96">
 
 # URV AI
 
@@ -19,6 +12,10 @@ A free, unrestricted roleplay AI chat — no account, no paywall, no filters.
 [![Homepage](https://img.shields.io/badge/Homepage-urv--ai.vercel.app-5B6EF5?style=flat-square&logo=vercel&logoColor=white)](https://urv-ai.vercel.app)
 [![Made by](https://img.shields.io/badge/by-WithThatWay-EEF0F6?style=flat-square)](https://perchance.org/withthatway)
 [![Free](https://img.shields.io/badge/Access-Free-22c55e?style=flat-square)]()
+
+<br>
+
+<img src="og-image.png" alt="URV AI Interface Preview" width="100%" style="max-width: 800px; border-radius: 8px;">
 
 </div>
 
