@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting to Pollinations | URV</title>
+    <style>
+        /* --- URV Design System --- */
+        :root {
+            --bg-main: #0A0D14;
+            --bg-sec: #11151F;
+            --bg-ter: #1E2535;
+            --text-main: #EEF0F6;
+            --text-muted: #cbcbcb;
+            --accent: #00E5C3;
+            --accent-dim: rgba(0, 229, 195, 0.1);
+            --font-main: "Inter", sans-serif;
+        }
+
+        body { 
+            font-family: var(--font-main); 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            text-align: center; 
+        }
+
+        .container { 
+            background-color: var(--bg-sec); 
+            padding: 2.5rem 2rem; 
+            border: 1px solid var(--bg-ter);
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+            max-width: 420px; 
+            width: 90%; 
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        .ad-slot { 
+            background-color: var(--bg-ter); 
+            border: 1px dashed var(--text-muted); 
+            border-radius: 8px;
+            margin: 20px 0; 
+            padding: 10px; 
+            min-height: 100px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+        }
+
+        .timer-wrapper {
+            margin: 2rem 0;
+        }
+
+        #timer { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            color: var(--accent); 
+            text-shadow: 0 0 15px var(--accent-dim);
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(0.95); }
+        }
+
+        .btn { 
+            background-color: var(--accent); 
+            color: var(--bg-main); 
+            border: none; 
+            padding: 14px 28px; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            display: none; 
+            width: 100%; 
+            font-size: 1rem; 
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover { 
+            box-shadow: 0 0 15px var(--accent-dim);
+            transform: translateY(-2px);
+        }
+
+        .info { 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            margin-top: 15px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="ad-slot" id="ad-banner-top" style="display:none;">
+            [ Advertisement ]
+        </div>
+
+        <h2>Preparing your secure connection...</h2>
+        
+        <div class="timer-wrapper">
+            <div id="timer">10</div>
+        </div>
+
+        <button id="btn-get" class="btn" onclick="executeRedirect()">Authorize Pollinations</button>
+        
+        <p class="info" id="status-text">Please keep this page open.</p>
+
+        <div class="ad-slot" id="ad-banner-bottom" style="display:none;">
+            [ Advertisement ]
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 10;
+        const timerElem = document.getElementById('timer');
+        const btnElem = document.getElementById('btn-get');
+        const statusText = document.getElementById('status-text');
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const encodedDest = urlParams.get('dest');
+
+        if (!encodedDest) {
+            document.body.innerHTML = "<div class='container'><h2 style='color: var(--danger);'>Error: Invalid or missing authorization link.</h2></div>";
+        }
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElem.innerText = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElem.style.display = 'none';
+                btnElem.style.display = 'block';
+                statusText.innerText = "Connection ready.";
+            }
+        }, 1000);
+
+        function executeRedirect() {
+            try {
+                const target = atob(encodedDest);
+                window.location.href = target;
+            } catch (e) {
+                alert("Failed to parse the redirect URL.");
+            }
+        }
+    </script>
+
+    <script src="https://pl29410244.profitablecpmratenetwork.com/ae/06/73/ae0673e0674554ec4b4eb507296727a8.js"></script>
+</body>
+</html>
