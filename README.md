@@ -15,7 +15,7 @@ A free, unrestricted roleplay AI chat — no account, no paywall, no filters.
 
 <br>
 
-<img src="og-image.png" alt="URV AI Interface Preview" width="100%" style="max-width: 800px; border-radius: 8px;">
+<img src="og_image_v2.jpg" alt="URV AI Interface Preview" width="100%" style="max-width: 800px; border-radius: 8px;">
 
 </div>
 
