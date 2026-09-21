@@ -607,14 +607,65 @@
     ───────────────────────────────────────── */
     footer {
       border-top: 1px solid rgba(30,37,53,0.5);
-      padding: 24px 48px;
+      padding: 32px 48px 28px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 28px;
       opacity: 0;
       animation: fadeIn 0.6s ease 1.4s both;
+    }
+
+    .footer-tagline {
+      max-width: 580px;
+      margin: 0;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      line-height: 1.8;
+      letter-spacing: 0.4px;
+      color: var(--text-muted);
+    }
+
+    .footer-tagline span { color: var(--accent); }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 48px;
+      width: 100%;
+    }
+
+    .footer-logo-link {
+      display: block;
+      width: 180px;
+      max-width: 40vw;
+      opacity: 0.72;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .footer-logo-link:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .footer-logo {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 1;
+      object-fit: contain;
+    }
+
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      width: 100%;
     }
 
     .footer-brand {
@@ -630,54 +681,6 @@
     .footer-brand:hover { color: var(--text-main); }
 
     .footer-brand span { color: var(--accent); }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--text-main); }
-
-    .footer-credits {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .footer-credit-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-credit-link span {
-      color: var(--accent);
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-
-    .footer-credit-link:hover { color: var(--text-main); }
-    .footer-credit-link:hover span { opacity: 1; }
-
-    .footer-credit-sep {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--border);
-    }
 
     /* ─────────────────────────────────────────
        MOBILE STAT CARDS (hidden on desktop)
@@ -806,14 +809,36 @@
       }
 
       footer {
-        padding: 20px 24px;
-        flex-direction: column;
+        padding: 28px 20px 24px;
+        gap: 20px;
+      }
+
+      .footer-tagline { max-width: 100%; }
+
+      .footer-logos {
+        flex-wrap: nowrap;
+        gap: 0;
         align-items: center;
+      }
+
+      .footer-logo-link {
+        flex: 1 1 0;
+        width: auto;
+        max-width: none;
+        min-width: 0;
+        padding: 0 10px;
+      }
+
+      .footer-logo-link + .footer-logo-link {
+        border-left: 1px solid var(--border);
+      }
+
+      .footer-meta {
+        flex-direction: column;
+        justify-content: center;
         text-align: center;
         gap: 12px;
       }
-
-      .footer-credits { justify-content: center; }
     }
 
     @media (max-width: 480px) {
@@ -898,7 +923,7 @@
           <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-llm">Multiple LLMs</span></span>
           <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-char">Character Creation</span></span>
           <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-img">Image Generation</span></span>
-          <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-censor">No Censorship</span></span>
+          <span class="pill"><span class="pill-dot"></span><span data-i18n="pill-roleplay">Roleplay</span></span>
         </div>
 
       </div>
@@ -964,21 +989,23 @@
 
     <!-- ── FOOTER ── -->
     <footer>
-      <div class="footer-credits">
-        <a href="https://perchance.org" target="_blank" rel="noopener" class="footer-credit-link">
-          <span data-i18n="footer-hosted">Hosted on</span> <span>Perchance</span>
+      <p class="footer-tagline" data-i18n="footer-tagline">One <span>OpenAI-compatible</span> endpoint — point the tools you already use at any provider, swap models mid-conversation, and leave the rest of your stack exactly as it is.</p>
+      <div class="footer-logos">
+        <a href="https://perchance.org" target="_blank" rel="noopener" class="footer-logo-link" aria-label="Perchance">
+          <img class="footer-logo" src="https://user.uploads.dev/file/d26fd27c1978b3ef1750c1149f0777ed.png" alt="Perchance" loading="lazy">
         </a>
-        <span class="footer-credit-sep">·</span>
-        <a href="https://pollinations.ai" target="_blank" rel="noopener" class="footer-credit-link">
-          <span data-i18n="footer-partof">Powered by</span> <span>Pollinations AI</span>
+        <a href="https://pollinations.ai" target="_blank" rel="noopener" class="footer-logo-link" aria-label="Pollinations AI">
+          <img class="footer-logo" src="https://user.uploads.dev/file/6641f718cab40dcc1a7955e3ada16bf0.png" alt="Pollinations AI" loading="lazy">
+        </a>
+        <a href="https://ai.tomdacat.com" target="_blank" rel="noopener" class="footer-logo-link" aria-label="TomdacatAI">
+          <img class="footer-logo" src="https://user.uploads.dev/file/fafa9c965469564efbd55281ff981ac0.png" alt="TomdacatAI" loading="lazy">
         </a>
       </div>
-      <a href="https://perchance.org/withthatway" target="_blank" rel="noopener" class="footer-brand">
-        <span>WithThatWay</span> Project
-      </a>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://perchance.org/urv-ai-chat" target="_self" data-i18n="footer-launch">Launch App</a>
-      </nav>
+      <div class="footer-meta">
+        <a href="https://perchance.org/withthatway" target="_blank" rel="noopener" class="footer-brand">
+          © 2026 <span>WithThatWay</span> Project
+        </a>
+      </div>
     </footer>
 
   </div><!-- /.page -->
@@ -994,14 +1021,14 @@
         'pill-llm':      'Multiple LLMs',
         'pill-char':     'Character Creation',
         'pill-img':      'Image Generation',
-        'pill-censor':   'No Censorship',
+        'pill-roleplay': 'Roleplay',
         'stat-char':     'Characters',
         'stat-free':     'Always',
         'stat-nopay':    'No Paywall',
         'stat-llm':      'Models',
         'footer-hosted': 'Hosted on',
         'footer-partof': 'Part of',
-        'footer-launch': 'Launch App',
+        'footer-tagline': 'One <span>OpenAI-compatible</span> endpoint — point the tools you already use at any provider, swap models mid-conversation, and leave the rest of your stack exactly as it is.',
       },
       id: {
         'hero-label':    'Chat AI Tanpa Batas',
@@ -1012,14 +1039,14 @@
         'pill-llm':      'Banyak LLM',
         'pill-char':     'Bikin Karakter',
         'pill-img':      'Generate Gambar',
-        'pill-censor':   'Tanpa Sensor',
+        'pill-roleplay': 'Roleplay',
         'stat-char':     'Karakter',
         'stat-free':     'Selamanya',
         'stat-nopay':    'Gratis',
         'stat-llm':      'Model',
         'footer-hosted': 'Di-host di',
         'footer-partof': 'Bagian dari',
-        'footer-launch': 'Buka Aplikasi',
+        'footer-tagline': 'Satu endpoint <span>OpenAI-compatible</span> — arahkan tool yang sudah kamu pakai ke provider mana pun, ganti model di tengah obrolan, dan biarkan sisa stack kamu tetap utuh.',
       }
     };
 
