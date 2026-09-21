@@ -43,9 +43,10 @@ Whether you're into casual chat, deep worldbuilding, or creative writing, URV AI
 - Set a custom scenario or world description for each chat
 - Keep your story consistent across long sessions with memory anchoring
 
-### 🤖 AI Models
+### 🤖 AI Models & APIs
 - Access a variety of AI models and switch between them freely
 - No single model lock-in — pick what works best for your story
+- Backed by **OpenAI-compatible** APIs, so URV AI can route across multiple providers without changing the way you chat
 
 ### 🖼️ Image Generation
 - Generate images directly inside the chat to bring your characters and scenes to life
@@ -80,7 +81,12 @@ URV AI is and will remain free to use. No premium tiers, no message limits, no h
 
 ## Credits
 
-Built and maintained by **[WithThatWay](https://perchance.org/withthatway)**
+URV AI is built and maintained by **[WithThatWay](https://perchance.org/withthatway)**. It runs on open, community-driven infrastructure, all reached through a single **OpenAI-compatible** interface:
+
+| | | |
+| :---: | :---: | :---: |
+| [<img src="https://user.uploads.dev/file/d26fd27c1978b3ef1750c1149f0777ed.png" alt="Perchance" width="180">](https://perchance.org) | [<img src="https://user.uploads.dev/file/6641f718cab40dcc1a7955e3ada16bf0.png" alt="Pollinations AI" width="180">](https://pollinations.ai) | [<img src="https://user.uploads.dev/file/fafa9c965469564efbd55281ff981ac0.png" alt="TomdacatAI" width="180">](https://ai.tomdacat.com) |
+| **[Perchance](https://perchance.org)**<br/><sub>Hosting platform</sub> | **[Pollinations AI](https://pollinations.ai)**<br/><sub>LLM API partner</sub> | **[TomdacatAI](https://ai.tomdacat.com)**<br/><sub>LLM API partner · Robux for Roblox creators</sub> |
 
 ---
 
