@@ -20,7 +20,7 @@ Capabilities map:
 - Roleplay & Storytelling: Character Book, lorebooks, memory, branching history, group chat.
 - Image & Video: text-to-image, image edit, image-to-video, auto-illustrated replies.
 - Voice: 5 TTS engines, per-model voices, read modes.
-- Agent Workspace: per-thread files the model can read/write/search (Editor Mode).
+- Agent Workspace: per-thread files the model can read/write/search (Agentic Mode).
 - Community: publish/browse characters, forum, shared galleries.
 - Personalization: themes, 11 languages, personas, UI scaling.
 
@@ -76,7 +76,7 @@ Input methods:
 - Vision: `+` button attaches 1+ images for multimodal analysis on hybrid/vision model.
 - Imagine: input becomes image prompt routed to image panel (text-to-image / edit / video).
 - Web Search: RAG retrieval before generation (SearXNG).
-- Editor Mode: file workspace tools.
+- Agentic Mode: agent file workspace tools — code editing, code execution, etc.
 - Document: attach PDFs/documents for analysis/summarization.
 
 Thinking & Effort:
@@ -233,14 +233,14 @@ Context budget: all triggered lore shares a char budget (default 2500). Over bud
 - System Sticky: persistent instruction block at end of prompt chain, never lost to window sliding.
 - Sandbox: isolated HTML/JS rendering. LLM-generated code executes safely in Artifact Preview window.
 
-## 13. Editor Mode & Workspace
+## 13. Agentic Mode & Workspace
 
-Chat becomes working agent with own file workspace. Model creates/reads/searches/edits files — builds/revises docs, code, structured data across turns.
+Chat becomes working agent with own file workspace. Model creates/reads/searches/edits files, edits and executes code — builds/revises docs, code, structured data across turns.
 
 - Requires external model: unavailable on Free-tier model; needs tool/function-calling-capable model.
-- Turn on: (1) select external model, (2) open `+ → Editor Mode`, (3) paperclip attaches up to 10 documents into workspace. Workspace is per-chat.
+- Turn on: (1) select external model, (2) open `+ → Agentic Mode`, (3) paperclip attaches up to 10 documents into workspace. Workspace is per-chat.
 - Workspace Panel: Menu → Your Workspace. Browse files/collapsible folders, new file/folder from scratch, upload from device, built-in code editor, send workspace file into chat as attachment.
-- Agent behavior: opens existing files, reads, project-wide definition search, writes/splices proposed changes, re-reads own work to confirm. Can draft scripts/configs/datasets/documents, rename/copy/reorganize into folders, fetch file from URL, view stored image, hand shareable link to output. Every action shown as expandable card in conversation.
+- Agent behavior: opens existing files, reads, project-wide definition search, writes/splices proposed changes, re-reads own work to confirm. Can draft scripts/configs/datasets/documents, run code, rename/copy/reorganize into folders, fetch file from URL, view stored image, hand shareable link to output. Every action shown as expandable card in conversation.
 
 ## 14. Community Hub
 
