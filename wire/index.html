@@ -2199,6 +2199,25 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js"></script>
   <script>
+  const PROXY_BASE = "https://superfetch.withthatway.workers.dev/proxy1";
+
+  async function superFetch(...args) {
+    let url = typeof args[0] === "object" ? (args[0].href || args[0].url) : args[0];
+    if (typeof url !== "string") throw new Error("Invalid URL provided.");
+    if (url.startsWith("blob:") || url.startsWith("data:")) return window.fetch(...args);
+    if (!/^https:\/\//.test(url)) throw new Error("Must provide full URL, starting with https://");
+    const proxiedUrl = `${PROXY_BASE}/${encodeURIComponent(new URL(url).href)}?origin=${encodeURIComponent(location.origin)}`;
+    let response;
+    if (typeof args[0] === "object" && args[0].url) {
+      args[0] = new Request(proxiedUrl, args[0]);
+      response = await window.fetch(...args);
+    } else {
+      response = await window.fetch(proxiedUrl, ...args.slice(1));
+    }
+    if (response.status === 530) throw new Error("Failed to fetch");
+    return response;
+  }
+
   /* ============================================================
    WIRE — API Tester Application Logic
    (unchanged)
@@ -2817,7 +2836,7 @@
     console.log('[Wire] request mode:', isStreaming ? 'stream (delta)' : 'response (full)', '| params:', Object.keys(requestBody).join(', '));
     try {
       state.abortController = new AbortController();
-      const response = await fetch(settings.endpoint, {
+      const response = await superFetch(settings.endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
