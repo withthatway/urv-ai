@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- ── Primary SEO ── -->
-  <title>URV AI | Unrestricted AI Chat</title>
-  <meta name="description" content="The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <title>URV AI | Limitless AI Chat Platform</title>
+  <meta name="description" content="The limitless AI chat platform where human creativity meets unbridled freedom. Explore worlds, meet characters, and roleplay your own stories. Free, no sign-up needed."/>
+  <meta name="keywords" content="Free AI Chat, AI Roleplay Chat, RP AI Chat, AI Character Roleplay, Custom AI Characters, Unfiltered AI Chat, Janitor AI Alternative, AI Chat with Memory, Free AI Image Generator, Limitless AI Chat, URV AI"/>
   <meta name="theme-color" content="#00E5C3"/>
 
   <!-- ── Open Graph ── -->
   <meta property="og:type"         content="website"/>
   <meta property="og:url"          content="https://urv-ai.vercel.app/"/>
-  <meta property="og:title"        content="URV AI | Unrestricted AI Chat"/>
-  <meta property="og:description"  content="The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta property="og:title"        content="URV AI | Limitless AI Chat Platform"/>
+  <meta property="og:description"  content="The limitless AI chat platform where human creativity meets unbridled freedom. Explore worlds, meet characters, and roleplay your own stories. Free, no sign-up needed."/>
   <meta property="og:image"        content="/og_image_v2.jpg"/>
   <meta property="og:image:width"  content="1729"/>
   <meta property="og:image:height" content="910"/>
 
   <!-- ── Twitter Card ── -->
   <meta name="twitter:card"        content="summary_large_image"/>
-  <meta name="twitter:title"       content="URV AI | Unrestricted AI Chat"/>
-  <meta name="twitter:description" content="The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access."/>
+  <meta name="twitter:title"       content="URV AI | Limitless AI Chat Platform"/>
+  <meta name="twitter:description" content="The limitless AI chat platform where human creativity meets unbridled freedom. Explore worlds, meet characters, and roleplay your own stories. Free, no sign-up needed."/>
   <meta name="twitter:image"       content="/og_image_v2.jpg"/>
 
   <!-- ── Author & Crawl directives ── -->
@@ -36,7 +37,7 @@
     "@type": "WebApplication",
     "name": "URV AI",
     "alternateName": "URV AI Chat",
-    "description": "The unrestricted chat platform where human creativity meets uncensored freedom. Access diverse LLMs, create unlimited characters, and generate images with free access.",
+    "description": "The limitless AI chat platform where human creativity meets unbridled freedom. Explore worlds, meet characters, and roleplay your own stories. Free, no sign-up needed.",
     "url": "https://urv-ai.vercel.app",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Web",
@@ -46,13 +47,13 @@
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD",
-      "description": "Free access to unrestricted AI chat"
+      "description": "Free access to limitless AI chat"
     },
     "featureList": [
       "Multiple LLM models",
       "Unlimited character creation",
       "AI image generation",
-      "Uncensored chat"
+      "Unfiltered roleplay chat"
     ],
     "author": {
       "@type": "Person",
@@ -715,16 +716,16 @@
 
       .hero {
         grid-template-columns: 1fr;
-        padding: 60px 24px 80px;
-        gap: 64px;
+        padding: 48px 20px 64px;
+        gap: 44px;
         text-align: center;
       }
 
-      .hero-copy { align-items: center; }
+      .hero-copy { align-items: center; gap: 20px; }
 
       .hero-label { justify-content: center; }
 
-      .hero-desc { text-align: center; }
+      .hero-desc { text-align: center; text-wrap: balance; }
 
       .hero-headline { font-size: clamp(2.4rem, 8vw, 3.2rem); }
 
@@ -734,12 +735,12 @@
 
       .hero-visual { order: -1; }
 
-      .mark-orbit { width: 260px; height: 260px; }
+      .mark-orbit { width: 220px; height: 220px; }
 
-      .hero-mark { width: 120px; height: 120px; }
+      .hero-mark { width: 100px; height: 100px; }
 
-      .orbit-dot  { transform-origin: 0 118px; top: 10px; }
-      .orbit-dot-2 { transform-origin: 0 88px; top: 40px; }
+      .orbit-dot  { transform-origin: 0 100px; top: 10px; }
+      .orbit-dot-2 { transform-origin: 0 70px; top: 40px; }
 
       /* Pull strip out of the orbit so it can span full width */
       .hero-visual {
@@ -842,9 +843,24 @@
     }
 
     @media (max-width: 480px) {
+      nav { padding: 14px 16px; }
+      .nav-right { gap: 8px; }
+      .nav-tagline { display: none; }
+
+      .hero { padding: 36px 16px 48px; gap: 36px; }
+      .hero-copy { gap: 18px; }
+      .hero-label { font-size: 10px; letter-spacing: 2px; }
+      .hero-headline { font-size: clamp(2.1rem, 9vw, 2.6rem); }
+
       .stat { padding: 8px 14px; min-width: 76px; }
       .stat-val { font-size: 0.9rem; }
       .btn-primary, .btn-ghost { padding: 12px 20px; font-size: 0.88rem; }
+
+      .stat-cards-mobile { gap: 6px; }
+      .stat-card-m { padding: 12px 6px 10px; }
+
+      .footer-logo-link { padding: 0 6px; }
+      .footer-tagline { font-size: 10px; }
     }
   </style>
 </head>
@@ -889,18 +905,18 @@
       <!-- Left: Copy -->
       <div class="hero-copy">
 
-        <span class="hero-label" data-i18n="hero-label">Unrestricted AI Chat</span>
+        <span class="hero-label" data-i18n="hero-label">Limitless AI Chat Platform</span>
 
         <h1 class="hero-headline" id="hero-heading" data-i18n="hero-headline">
           Where creativity<br/>
-          meets <em>uncensored</em><br/>
+          meets <em>unbridled</em><br/>
           <span class="dim">freedom.</span>
         </h1>
 
         <p class="hero-desc" data-i18n="hero-desc">
           Access diverse LLMs, create unlimited characters,
           and generate images — all with free access.
-          No walls. No filters. Just you and the model.
+          No walls. No sign-up. Just you and the model.
         </p>
 
         <div class="hero-actions">
@@ -1013,9 +1029,9 @@
   <script>
     const translations = {
       en: {
-        'hero-label':    'Unrestricted AI Chat',
-        'hero-headline': 'Where creativity<br/>meets <em>uncensored</em><br/><span class="dim">freedom.</span>',
-        'hero-desc':     'Access diverse LLMs, create unlimited characters, and generate images — all with free access. No walls. No filters. Just you and the model.',
+        'hero-label':    'Limitless AI Chat Platform',
+        'hero-headline': 'Where creativity<br/>meets <em>unbridled</em><br/><span class="dim">freedom.</span>',
+        'hero-desc':     'Access diverse LLMs, create unlimited characters, and generate images — all with free access. No walls. No sign-up. Just you and the model.',
         'btn-start':     'Start Chat',
         'btn-free':      'Free access',
         'pill-llm':      'Multiple LLMs',
@@ -1032,7 +1048,7 @@
       },
       id: {
         'hero-label':    'Chat AI Tanpa Batas',
-        'hero-headline': 'Tempat kreativitas<br/>ketemu <em>kebebasan</em><br/><span class="dim">tanpa sensor.</span>',
+        'hero-headline': 'Tempat kreativitas<br/>ketemu <em>kebebasan</em><br/><span class="dim">tanpa batas.</span>',
         'hero-desc':     'Akses berbagai LLM, bikin karakter sesukamu, dan generate gambar — semuanya gratis. Nggak ada batasan. Nggak ada filter. Cuma kamu sama modelnya.',
         'btn-start':     'Mulai Chat',
         'btn-free':      'Gratis, kok',
