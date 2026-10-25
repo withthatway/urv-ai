@@ -6,7 +6,7 @@
 
 **Understanding · Reasoning · Value**
 
-A free, unrestricted roleplay AI chat — no account, no paywall, no filters.
+A free, limitless roleplay AI chat — no account, no paywall, no sign-up.
 
 [![Launch App](https://img.shields.io/badge/Launch%20App-Start%20Chatting-00E5C3?style=flat-square&logo=googlechrome&logoColor=white)](https://perchance.org/urv-ai-chat)
 [![Homepage](https://img.shields.io/badge/Homepage-urv--ai.vercel.app-5B6EF5?style=flat-square&logo=vercel&logoColor=white)](https://urv-ai.vercel.app)
@@ -23,7 +23,7 @@ A free, unrestricted roleplay AI chat — no account, no paywall, no filters.
 
 ## What is URV AI?
 
-URV AI is a free roleplay chat platform powered by AI. You can create your own characters, build rich story worlds, and have uncensored conversations — all from your browser. No sign-up required.
+URV AI is a free roleplay chat platform powered by AI. You can create your own characters, build rich story worlds, and have unfiltered conversations — all from your browser. No sign-up required.
 
 Whether you're into casual chat, deep worldbuilding, or creative writing, URV AI gives you the freedom to explore without limits.
 
