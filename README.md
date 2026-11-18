@@ -2,11 +2,16 @@
 
 <img src="favicon.svg" alt="URV AI Logo" width="96" height="96">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="u-r-valuable-dark.svg">
+  <img src="u-r-valuable-light.svg" alt="u r valuable" width="240">
+</picture>
+
 # URV AI
 
 **Understanding · Reasoning · Value**
 
-A free, limitless roleplay AI chat — no account, no paywall, no sign-up.
+A free roleplay AI chat in your browser.
 
 [![Launch App](https://img.shields.io/badge/Launch%20App-Start%20Chatting-00E5C3?style=flat-square&logo=googlechrome&logoColor=white)](https://perchance.org/urv-ai-chat)
 [![Homepage](https://img.shields.io/badge/Homepage-urv--ai.vercel.app-5B6EF5?style=flat-square&logo=vercel&logoColor=white)](https://urv-ai.vercel.app)
@@ -23,65 +28,74 @@ A free, limitless roleplay AI chat — no account, no paywall, no sign-up.
 
 ## What is URV AI?
 
-URV AI is a free roleplay chat platform powered by AI. You can create your own characters, build rich story worlds, and have unfiltered conversations — all from your browser. No sign-up required.
-
-Whether you're into casual chat, deep worldbuilding, or creative writing, URV AI gives you the freedom to explore without limits.
+URV AI is a free roleplay chat platform that runs in your browser. Create your own characters, build story worlds, and have unfiltered conversations. No sign-up required.
 
 ---
 
 ## What can you do?
 
-### 🎭 Roleplay & Characters
-- Chat with AI characters in any scenario you can imagine
+### Roleplay & characters
+
+- Chat with AI characters in any scenario
+- Put multiple characters in the same conversation
 - Create your own characters with custom names, personalities, and backstories
-- Interact with multiple characters in the same conversation
-- Import characters from **SillyTavern V2 format** (`.json`)
+- Import character cards from common formats like SillyTavern, PNG, Chub AI, and more
 - Switch characters mid-session without losing context
 
-### 📖 Worldbuilding & Lore
-- Build your own lore with a built-in **Lorebook** — define places, factions, relationships, and events that the AI always remembers
+### Worldbuilding & lore
+
+- Build lore in the built-in Lorebook: places, factions, relationships, and events that the AI remembers throughout the chat
 - Set a custom scenario or world description for each chat
-- Keep your story consistent across long sessions with memory anchoring
+- Memory anchoring keeps the story consistent across long sessions
 
-### 🤖 AI Models & APIs
-- Access a variety of AI models and switch between them freely
-- No single model lock-in — pick what works best for your story
-- Backed by **OpenAI-compatible** APIs, so URV AI can route across multiple providers without changing the way you chat
+### AI models & APIs
 
-### 🖼️ Image Generation
-- Generate images directly inside the chat to bring your characters and scenes to life
+- Switch freely between multiple AI models and pick whatever works best for your story
+- Runs on OpenAI-compatible and Anthropic-compatible APIs, so URV AI can route across multiple providers without changing how you chat
 
-### ✨ Quality of Life
+### Image generation
+
+- Generate images inside the chat to illustrate your characters and scenes
+
+### Quality of life
+
 - Dark and light theme
 - Custom chat wallpapers
-- Full chat history with branching — go back to any point and take the story in a new direction
+- Branching chat history: go back to any point and take the story in a new direction
 - Mobile friendly
+- Interface in 12 languages: English, Bahasa Indonesia, Deutsch, Français, Español, Italiano, 中文（简体）, Русский, 日本語, हिन्दी, العربية, فارسی
 
 ---
 
 ## How to get started
 
-1. Go to **[urv-ai.vercel.app](https://urv-ai.vercel.app)** or open the app directly at **[perchance.org/urv-ai-chat](https://perchance.org/urv-ai-chat)**
+1. Go to [urv-ai.vercel.app](https://urv-ai.vercel.app) or open the app directly at [perchance.org/urv-ai-chat](https://perchance.org/urv-ai-chat)
 2. Pick a model
-3. Create a character or start chatting right away — no account needed
+3. Create a character or start chatting right away
 
 ---
 
 ## Importing characters
 
-URV AI supports the **SillyTavern V2 character card format**. If you have existing character `.json` files from SillyTavern or compatible apps, you can import them directly into URV AI without any changes.
+URV AI supports common character card formats like SillyTavern, PNG, Chub AI, and more. If you have cards from SillyTavern, Chub AI, or compatible apps, you can import them directly.
 
 ---
 
-## Free. Always.
+## URV Hub
 
-URV AI is and will remain free to use. No premium tiers, no message limits, no hidden paywalls.
+Explore character cards shared by creators.
+
+---
+
+## Free, always
+
+URV AI is free to use and will stay free. No premium tiers, no message limits, no hidden paywalls.
 
 ---
 
 ## Credits
 
-URV AI is built and maintained by **[WithThatWay](https://perchance.org/withthatway)**. It runs on open, community-driven infrastructure, all reached through a single **OpenAI-compatible** interface:
+URV AI is built and maintained by [WithThatWay](https://perchance.org/withthatway) and runs on:
 
 | | | |
 | :---: | :---: | :---: |
@@ -91,5 +105,5 @@ URV AI is built and maintained by **[WithThatWay](https://perchance.org/withthat
 ---
 
 <div align="center">
-  <sub>URV AI · V2 · Understanding · Reasoning · Value</sub>
+ <sub>URV AI · V2 · Understanding · Reasoning · Value</sub>
 </div>
